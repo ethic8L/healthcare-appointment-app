@@ -33,12 +33,20 @@ function CategorySearch() {
 
         {/* Display List of Category*/}
         <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
-          {categoryList.map((item, index)=>index<6 && (
+          {categoryList.length>0?categoryList.map((item, index)=>index<6 && (
             <div key={index} className='flex flex-col text-center items-center gap-2 p-5 m-2 rounded-lg bg-blue-50 hover:scale-110 transition-all ease-in-out mt-5 cursor-pointer'>
               <Image  src={item.Icon?.[0]?.url} alt='icon' width={40} height={40}/>
               <label className='text-blue-600 text-sm'>{item?.Name}</label>
             </div>
-          ))}
+          ))
+        
+          :
+          // Skeleton Effect
+          [1,2,3,4,5,6].map((item, index)=>(
+            <div className='h-[120px] m-2 w-[130px] bg-slate-200 rounded-lg animate-pulse' key={index}>
+            </div>
+          ))
+          }
         </div>
 
          
